@@ -71,3 +71,5 @@ def count_every_sonet():
                     else:
                         continue
             print("In file: {} the word {} occurs {} times.\n".format((file1),(word),(i))) # Printing the results for every file.
+
+print(count_from_inputed_file())

@@ -42,7 +42,7 @@ def totolotek():
             kule_uzytkownika.append(kula)
         wylosowane = [] # List which will contain the random balls.
         while len(wylosowane) < 6: # Checking whether there is six random balls.
-            liczba = random.randint(1,50)
+            liczba = random.randint(1,49)
             if liczba in wylosowane: # If the licbzba is already in the list we draw again.
                 continue
             else:
