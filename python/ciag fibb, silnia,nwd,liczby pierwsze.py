@@ -42,7 +42,7 @@ def pierwsze(n):
     liczby_pierwsze = [] # Tablica przechowywujaca liczby pierwsze.
     for i in liczby: # Sprawdzanie wszystkich liczb z podanego zakresu.
         tab_z_dzielnikami = [] # Tablica przechowywujaca dzielniki.
-        for x in range(3,i+1): # Pętla w której liczby z tablicy dzielimy po kolei przez kolejne liczby od 3 do niej samej.
+        for x in range(2,i+1): # Pętla w której liczby z tablicy dzielimy po kolei przez kolejne liczby od 3 do niej samej.
             if i%x == 0:
                 tab_z_dzielnikami.append(x)
             else:
@@ -51,6 +51,7 @@ def pierwsze(n):
             liczby_pierwsze.append(tab_z_dzielnikami[0])
             tab_z_dzielnikami = []  # Przypisujemy pusta tablice w celu nastepnego sprawdzenia anstepnej liczby.
     return "Liczby pierwsze z zakresu 2 - {} to: {}.".format((n),(liczby_pierwsze))
+
 
 
 
