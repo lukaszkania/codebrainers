@@ -39,27 +39,29 @@ def wyszukiwanie_w_kilku_plikach(lista):
 # Zadanie 2 - totolotek.
 
 def totolo():
-    typy_uzytkownika = set() # Zbiór przechowywujący typy użytkownika.
-    typy_wylosowane = set() # Zbiór przechowywujący wylosowane kule.
+    typy_uzytkownika = set()
+    typy_wylosowane = set()
     try:
-        # Pobieranie od użtykonika jego typów i zapisywanie ich w zbiorze.
-        for x in range(1,7):
-            kula = int(input("Podaj swój typ: "))
-            typy_uzytkownika.add(kula)
-        # Losowanie kul i zapisywanie ich w zbiorze.
-        for x in range(1,7):
-            kula = random.randint(1,49)
-            typy_wylosowane.add(kula)
-        i = 0 # Iterator liczący ilość trafionych typów.
-        # Pętla sprawdzająca trafione typy.
-        for x in typy_wylosowane:
-            for y in typy_uzytkownika:
-                if y == x:
-                    i += 1
+        while len(typy_uzytkownika) < 6:
+            x = int(input("Podaj swój typ: "))
+            if x not in range(1,50):
+                print("Liczba poza zakresem!")
+                continue
+            else:
+                typy_uzytkownika.add(x)
+
+        while len(typy_wylosowane) < 6:
+            typy_wylosowane.add(random.randint(1,50))
+
+        i = list()
+
+        for x in typy_uzytkownika:
+            if x in typy_wylosowane:
+                i.append(x)
         print("Twoje typy: ",typy_uzytkownika)
         print("Wylosowane kule: ",typy_wylosowane)
-        print("Udało Ci się trafić {} z 6.".format(i))
-    except ValueError: # Wyjątek łapiący wprowadzenie przez użytkownika złej wartości z klawiatury.
+        print("Udało Ci się trafić {} z 6. Te kule to {}.".format(len(i),i))
+    except ValueError:
         print("Upewnij się, że podajesz liczby!")
 
 # Zadanie 2a – powtarzające się liczby.
@@ -72,18 +74,26 @@ def unikalny_lotek():
             x = int(input("Podaj swój typ: "))
             if x in typy_uzytkownika:
                 print("Podałeś już tą liczbe!")
+            elif x not in range(1,50):
+                print("Liczba poza zakresem!")
             else:
                 typy_uzytkownika.add(x)
+
         while len(typy_wylosowane) < 6:
-            typy_wylosowane.add(random.randint(1,49))
-        i = 0  
-        for x in typy_wylosowane:
-            for y in typy_uzytkownika:
-                if y == x:
-                    i += 1    
+            los = random.randint(1,49)
+            if los in typy_wylosowane:
+                continue
+            else:
+                typy_wylosowane.add(los)
+
+        i = list()
+
+        for x in typy_uzytkownika:
+            if x in typy_wylosowane:
+                i.append(x)
         print("Twoje typy: ",typy_uzytkownika)
         print("Wylosowane kule: ",typy_wylosowane)
-        print("Udało Ci się trafić {} z 6.".format(i))
+        print("Udało Ci się trafić {} z 6. Te kule to {}.".format(len(i),i))
     except ValueError:
         print("Upewnij się, że podajesz liczby!")
 
